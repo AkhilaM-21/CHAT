@@ -1,14 +1,8 @@
 import express from 'express';
-import { signup } from '../contollers/auth.controller.js';
+import { signup ,login,logout } from '../contollers/auth.controller.js';
 const router=express.Router();
 
-router.get('/signup',signup);
-router.get('/login',(req,res)=>
-{
-    res.send({message:"login API is working"});
-})
-router.get('/logout',(req,res)=>
-{
-    res.send({message:"logout API is working"});
-})
+router.post('/signup',signup);
+router.post('/login',login);
+router.post('/logout',logout);
 export default router;
