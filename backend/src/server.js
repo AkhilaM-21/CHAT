@@ -5,6 +5,7 @@ import messageRoutes from './routes/message.route.js';
 import path from 'path';
 import { fileURLToPath } from "url";
 import { connectDB } from './lib/db.js';
+import cookieParser from 'cookie-parser';
 dotenv.config();
 
 const app = express();
@@ -16,6 +17,7 @@ const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json()); //middle ware
+app.use(cookieParser());
 
 // API routes
 app.use('/api/auth', authRoutes);

@@ -1,13 +1,11 @@
-import express from 'express';
-const router=express.Router();
+import express from "express";
+import { getAllContacts ,getMessagesByUserId,sendMessage,getChatpartners} from "../contollers/message.controller.js";
+import { protectRoute } from "./auth.middelware.js";
 
-router.get('/send',(req,res)=>
-{
-    res.send({message:"Send Message API is working"});
-})
-router.get('/receive',(req,res)=>
-{
-    res.send({message:"Receive Message API is working"});
-})
+const router = express.Router();
+
+router.get("/contacts", protectRoute, getAllContacts);
+router.get("/chats", protectRoute, getChatpartners);
+router.get("/:id",protectRoute,getMessagesByUserId);
+router.post("/send/:id",protectRoute,sendMessage);
 export default router;
-
