@@ -57,6 +57,10 @@ export const login=async(req,res)=>
 {
 
     const {email,password}=req.body;
+    if(!email || !password)
+    {
+        return res.status(400).send({message:"All fields are required"});
+    }
     try{
         const user=await User.findOne({email});
         if(!user) return res.status(400).send({message:"Invalid creditionals"});
